@@ -3,6 +3,10 @@ const app = express();
 const port = 3000;
 const pokemon = require('./models/pokemon.js')
 
+app.set('view engine', 'ejs');
+app.set('views', __dirname + '/views');
+
+
 
 
 app.get('/', (req, res) =>{
@@ -11,11 +15,11 @@ app.get('/', (req, res) =>{
 
 
 app.get('/pokefriends', (req, res) => {
-	res.render('index.ejs', {pokemon})
+	res.render('index', {pokemon})
 })
 
 app.get('/pokemon/:id', (req, res) =>{
-	res.send(pokemon[req.params.id]);
+	res.render('show', {dud: pokemon[req.params.id]});
 })
 
 
