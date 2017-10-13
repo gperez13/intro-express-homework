@@ -2,14 +2,11 @@
 <html>
 <head>
 	<title></title>
+	<link rel="stylesheet" type="text/css" href="/styles/style.css">
+
 </head>
 <body>
-<style type="text/css">
-	body {
-		background-color: teal;
-		color: orange;
-	}
-</style>
+
 
 
 
@@ -20,7 +17,10 @@
 
 		<h2> <%=dud.name%> </h2>
 		<img src="<%=dud.img%>" >
-		<a href="/pokefriends">Back</a>
+		<a href="/pokemon/<%=index%>/edit" > Edit</a>
+		<a id="return" href="/pokemon">Back</a>
+
+
 
 	</ul>
 

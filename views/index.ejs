@@ -2,31 +2,38 @@
 <html>
 <head>
 	<title></title>
-</head>
-<body>
-<style type="text/css">
-	body {
-		background-color: teal;
-		color: orange;
-	}
-</style>
 
+
+	<link rel="stylesheet" type="text/css" href="/styles/style.css">
+</head>
+
+<body>
 
 
 
 	<h1>See All The Pokemon!</h1>
 
+	<a href="/pokemon/new">Who's That Pokemon?</a>
+
+
+
+
+
+
 	<ul>
 
-		<% for(let i = 0; i < pokemon.length; i++) { %>
-		<li> <%=pokemon[i].name%> </li>
-		<a href="/pokemon/<%=i%>" > I Choose You</a>
-		<% } %>
+		<% pokemon.forEach(function(poke, i) { %>
+		<li> <%=poke.name%> </li>
+		<form action ="pokemon/<%=i%>?_method=DELETE" method="POST">
+			<button type="submit">Release</button>
+			<a href="/pokemon/<%=i%>" > I Choose You</a>
 
+		</form>
+ 		<% }) %>
 	</ul>
 
 
 
-
+<script src="/javascript/app.js"></script>
 </body>
 </html>

@@ -1,31 +1,36 @@
 const express =  require('express');
 const app = express();
-const port = 3000;
-const pokemon = require('./models/pokemon.js')
+const port = 2000;
+const bodyParser = require('body-parser');
+const methodOverride = require('method-override');
+const pokemonController = require('./controllers/controls')
+
+
+
+
+
 
 app.set('view engine', 'ejs');
 app.set('views', __dirname + '/views');
 
+app.use(express.static('public'));
+
+app.use(bodyParser.urlencoded({extended: false}));
+
+app.use(methodOverride('_method'));
 
 
 
-app.get('/', (req, res) =>{
-	res.send('Welcome to the Pokemon App!')
-})
 
 
-app.get('/pokefriends', (req, res) => {
-	res.render('index', {pokemon})
-})
-
-app.get('/pokemon/:id', (req, res) =>{
-	res.render('show', {dud: pokemon[req.params.id]});
-})
 
 
+
+
+app.use('/pokemon', pokemonController);
 
 
 
 app.listen(port, () => {
 	console.log('this is set up')
-})
+});
